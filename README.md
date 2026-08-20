@@ -1,10 +1,19 @@
-# DiTz Store Portfolio + Web Store
+# DiTz Store v2
 
-Fitur: landing page premium, katalog project + harga, link demo, WhatsApp order, admin login, CRUD project, Supabase, responsive, Vercel-ready.
+Production-capable Next.js storefront with product catalog, cart, checkout, order tracking, customer accounts, and secure admin panel.
 
-## Setup
-1. `npm install` lalu `npm run dev`
-2. Buat Supabase project dan jalankan `supabase/schema.sql`
-3. Buat user admin di Authentication > Users
-4. Salin `.env.example` ke `.env.local` lalu isi URL, anon key, dan WhatsApp
-5. Deploy ke Vercel dan masukkan env variables yang sama.
+## Production setup
+1. Create a Supabase project.
+2. Run `supabase/schema.sql` in Supabase SQL Editor.
+3. Add environment variables from `.env.example` to Vercel or your VPS.
+4. Deploy.
+
+### Security baseline
+- Admin credentials only from server environment variables.
+- HttpOnly + SameSite=Strict signed sessions.
+- Server-authoritative product pricing for checkout.
+- Rate limiting and input validation.
+- Security headers.
+- Public tracking never exposes customer name/email/phone.
+
+When database variables are absent the storefront stays reviewable, but checkout/account persistence is intentionally disabled rather than pretending to be production storage.
